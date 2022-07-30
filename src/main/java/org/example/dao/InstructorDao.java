@@ -1,0 +1,21 @@
+package org.example.dao;
+
+import org.example.model.Course;
+import org.example.model.Instructor;
+
+import java.util.List;
+
+public interface InstructorDao {
+    void saveInstructor(Instructor instructor);
+
+    void updateInstructor(Long id, Instructor instructor);
+
+    Instructor getInstructorById(Long id);
+
+    List<Instructor> getInstructorByCourseId(Long id);
+
+    void deleteInstructorById(Long id);
+
+    void assignInstructorToCourse(Long id, Long courseId);
+
+}
