@@ -9,9 +9,11 @@ import java.util.List;
 public class TaskServiceImpl implements TaskService {
     TaskDaoImpl taskDao = new TaskDaoImpl();
     @Override
-    public void saveTask(Task task) {
-taskDao.saveTask(task);
+    public void saveTask(Long id,Task task) {
+taskDao.saveTask(id,task);
     }
+
+
 
     @Override
     public void update(Long id, Task task) {

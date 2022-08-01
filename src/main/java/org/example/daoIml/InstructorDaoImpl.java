@@ -4,13 +4,13 @@ import org.example.DataBase;
 import org.example.dao.InstructorDao;
 import org.example.model.Course;
 import org.example.model.Instructor;
+import org.hibernate.HibernateException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+
 import java.util.List;
 
 public class InstructorDaoImpl implements InstructorDao {
-    EntityManager entityManager = DataBase.entityManager();
 
     @Override
     public void saveInstructor(Instructor instructor) {
@@ -62,13 +62,20 @@ public class InstructorDaoImpl implements InstructorDao {
 
     @Override
     public void deleteInstructorById(Long id) {
-        EntityManager entityManager = DataBase.entityManager();
-        entityManager.getTransaction().begin();
-       Instructor instructor = entityManager.find(Instructor.class,id);
-       entityManager.remove(instructor);
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        System.out.println("id "+ id+ " successfully deleted! ");
+        try {
+            EntityManager entityManager = DataBase.entityManager();
+            entityManager.getTransaction().begin();
+            Instructor instructor = entityManager.find(Instructor.class, id);
+            for (Course c : instructor.getCourse()) {
+                c.setInstructor(null);
+            }
+            entityManager.remove(instructor);
+            entityManager.getTransaction().commit();
+            entityManager.close();
+            System.out.println("id " + id + " successfully deleted! ");
+        } catch (HibernateException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -76,9 +83,11 @@ public class InstructorDaoImpl implements InstructorDao {
         EntityManager entityManager = DataBase.entityManager();
         entityManager.getTransaction().begin();
         Course course = entityManager.find(Course.class, courseId);
-        course.setInstructor(entityManager.find(Instructor.class, id));
         Instructor instructor = entityManager.find(Instructor.class, id);
-        instructor.setCourse(entityManager.find(Course.class, courseId));
+        course.addInstructor(instructor);
+        instructor.addCourse(course);
+        entityManager.persist(course);
+        entityManager.persist(instructor);
         entityManager.getTransaction().commit();
         entityManager.close();
 

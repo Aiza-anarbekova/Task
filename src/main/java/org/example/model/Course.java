@@ -19,8 +19,8 @@ import java.util.List;
 
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_generator")
-    @SequenceGenerator(name="player_generator", sequenceName = "player_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+   // @SequenceGenerator(name="player_generator", sequenceName = "player_seq", allocationSize = 1, initialValue = 1)
 
     private Long id;
     @Column(name = "course_name", nullable = false)
@@ -39,10 +39,22 @@ public class Course {
         this.imageLink = imageLink;
         this.description = description;
     }
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.DETACH},mappedBy = "course",fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.REFRESH,
+            CascadeType.DETACH,CascadeType.PERSIST},mappedBy = "course",fetch = FetchType.EAGER)
     private List<Instructor> instructor;
 
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.REMOVE,CascadeType.DETACH,CascadeType.REFRESH},mappedBy = "course")
+    public void addInstructor(Instructor instructor1){
+        this.instructor.add(instructor1);
+
+    }
+
+
+    public void  removeInstructor(Instructor instructor1){
+        this.instructor.remove(instructor1);
+    }
+
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.REMOVE,
+            CascadeType.DETACH,CascadeType.REFRESH},mappedBy = "course",fetch = FetchType.LAZY)
     private List<Lesson> lesson;
 
     @Override
@@ -50,10 +62,10 @@ public class Course {
         return id+"  "+courseName+"  "+duration+"  "+createAt+ "  "+description+ " "+imageLink;
     }
 
-    public void setInstructor(Instructor instructor0){
-        if (instructor == null){
-            instructor = new ArrayList<>();
-        }
-        instructor.add(instructor0);
+//    public void setInstructor(Instructor instructor0){
+//        instructor.add(instructor0);
+//    }
+    public void setLesson(Lesson lesson1){
+        lesson.add(lesson1);
     }
 }

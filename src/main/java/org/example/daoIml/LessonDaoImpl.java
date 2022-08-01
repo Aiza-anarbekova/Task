@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 public class LessonDaoImpl implements LessonDao {
-    EntityManager entityManager = DataBase.entityManager();
+
     @Override
     public void saveLesson(Long id, Lesson lesson) {
         EntityManager entityManager = DataBase.entityManager();
@@ -50,9 +50,11 @@ public class LessonDaoImpl implements LessonDao {
     public List<Lesson> getLessonByCourseId(Long id) {
         EntityManager entityManager = DataBase.entityManager();
         entityManager.getTransaction().begin();
-       List<Lesson> lesson = entityManager.createQuery("select l from Lesson l").getResultList();
+        Course course = entityManager.find(Course.class,id);
+        List<Lesson> lesson = course.getLesson();
        entityManager.getTransaction().commit();
        entityManager.close();
+        System.out.println("All lessons: ");
         return lesson;
     }
 }

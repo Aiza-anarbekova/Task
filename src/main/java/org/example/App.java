@@ -79,6 +79,7 @@ public class App
                 case 1:
                     courseService.saveCourse(course);
                     courseService.saveCourse(course1);
+                    ///courseService.saveCourse(course2);
                     break;
                 case 2:
                     System.out.println(courseService.getCourseById(2L));
@@ -90,7 +91,7 @@ public class App
                     courseService.updateCourse(2L,course2);
                     break;
                 case 5:
-                    courseService.deleteCourseById(1L);
+                    //courseService.deleteCourseById(1L);
                     courseService.deleteCourseById(2L);
                     break;
                 case 6:
@@ -101,45 +102,46 @@ public class App
                     instService.saveInstructor(instructor1);
                     break;
                 case 8:
-                    instService.updateInstructor(7L,instructor2);
+                    instService.updateInstructor(4L,instructor2);
                     break;
                 case 9:
-                    System.out.println(instService.getInstructorById(7L));
+                    System.out.println(instService.getInstructorById(4L));
                     break;
                 case 10:
-                    instService.getInstructorByCourseId(5L).forEach(System.out::println);
+                    instService.getInstructorByCourseId(2L).forEach(System.out::println);
                     break;
                 case 11:
-                    instService.deleteInstructorById(11L);
+                    instService.deleteInstructorById(5L);
                     break;
                 case 12:
-                    instService.assignInstructorToCourse(11L,9L);
+                    instService.assignInstructorToCourse(5L,2L);
+                   // instService.assignInstructorToCourse(5L,2L);
                     break;
                 case 13:
-                    lessonService.saveLesson(9L,lesson);
-                    lessonService.saveLesson(10L,lesson1);
+                    lessonService.saveLesson(2L,lesson);
+                    lessonService.saveLesson(3L,lesson1);
                     break;
                 case 14:
-                    lessonService.updateLesson(1L,lesson2);
+                    lessonService.updateLesson(7L,lesson2);
                     break;
                 case 15:
-                    System.out.println(lessonService.getLessonById(1L));
+                    System.out.println(lessonService.getLessonById(6L));
                     break;
                 case 16:
-                    lessonService.getLessonByCourseId(9L).forEach(System.out::println);
+                    lessonService.getLessonByCourseId(3L).forEach(System.out::println);
                     break;
                 case 17:
-                    taskService.saveTask(task);
-                    taskService.saveTask(task1);
+                    taskService.saveTask(6L,task);
+                    taskService.saveTask(7L,task1);
                     break;
                 case 18:
-                    taskService.update(1L,task2);
+                    taskService.update(10L,task2);
                     break;
                 case 19:
-                    System.out.println(taskService.getTaskByLessonId(1L));
+                    System.out.println(taskService.getTaskByLessonId(7L));
                     break;
                 case 20:
-                    taskService.deleteTaskById(1L);
+                    taskService.deleteTaskById(9L);
 
             }
         }

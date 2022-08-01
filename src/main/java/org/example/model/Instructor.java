@@ -17,8 +17,9 @@ import java.util.List;
 public class Instructor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_generator")
-    @SequenceGenerator(name="player_generator", sequenceName = "player_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+            //, generator = "player_generator")
+   // @SequenceGenerator(name="player_generator", sequenceName = "player_seq", allocationSize = 1, initialValue = 1)
 
     private Long id;
     @Column(name = "first_name")
@@ -35,15 +36,27 @@ public class Instructor {
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH})
+    @ManyToMany(cascade = {CascadeType.MERGE,
+            CascadeType.REFRESH,
+            CascadeType.DETACH},fetch = FetchType.EAGER)
     private List<Course> course;
 
-    public void setCourse(Course course1) {
-        if (course==null) {
-            course = new ArrayList<>();
-        }
-            course.add(course1);
+    public void addCourse(Course course1){
+        this.course.add(course1);
+       // course1.getInstructor().add(this);
     }
+
+    public void removeCourse(Course course1){
+        this.course.remove(course1);
+       // course1.getInstructor().remove(this);
+    }
+
+//    public void setCourse(Course course1) {
+//        if (course==null) {
+//            course = new ArrayList<>();
+//        }
+//            course1.setInstructor(this);
+//    }
 
     @Override
     public String toString() {

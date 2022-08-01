@@ -15,8 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "player_generator")
-    @SequenceGenerator(name="player_generator", sequenceName = "player_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+          ///  , generator = "player_generator")
+    //@SequenceGenerator(name="player_generator", sequenceName = "player_seq", allocationSize = 1, initialValue = 1)
 
     private Long id;
     private String name;
@@ -29,6 +30,16 @@ public class Task {
         this.deadline = deadline;
         this.task = task;
     }
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},fetch = FetchType.EAGER)
+    private Lesson lesson;
+
+
+
+    //    public void removeTask(Task task){
+//        this.task.r
+//    }
+
+
 
     @Override
     public String toString() {

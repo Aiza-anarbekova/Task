@@ -7,18 +7,22 @@ import org.example.model.Task;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskDaoImpl implements TaskDao {
-    EntityManager entityManager = DataBase.entityManager();
+
     @Override
-    public void saveTask(Task task) {
+    public void saveTask(Long id,Task task) {
         EntityManager entityManager = DataBase.entityManager();
         entityManager.getTransaction().begin();
-        entityManager.persist(task);
+        Lesson lesson = entityManager.find(Lesson.class,id);
+        lesson.addTask(task);
+        task.setLesson(lesson);
+        entityManager.persist(lesson);
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println(task+" successfully saved ");
+        System.out.println(task.getName()+" successfully saved ");
 
     }
 
@@ -52,8 +56,9 @@ public class TaskDaoImpl implements TaskDao {
     public void deleteTaskById(Long id) {
         EntityManager entityManager = DataBase.entityManager();
         entityManager.getTransaction().begin();
-        Query query= entityManager.createQuery("delete from Task  where id=:"+id);
-        query.executeUpdate();
+        Task task = entityManager.find(Task.class,id);
+        task.setLesson(null);
+        entityManager.remove(task);
         entityManager.getTransaction().commit();
         entityManager.close();
         System.out.println("id: "+id +" successfully deleted! ");
