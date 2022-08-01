@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bcc49a0a-02a0-4e76-8f72-955a5e1f9e52" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/TaskDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/TaskDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/daoIml/CourseDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/daoIml/CourseDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/daoIml/InstructorDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/daoIml/InstructorDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/daoIml/LessonDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/daoIml/LessonDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/daoIml/TaskDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/daoIml/TaskDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Instructor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Instructor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Lesson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Lesson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/TaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/serviceImpl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/serviceImpl/TaskServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="bcc49a0a-02a0-4e76-8f72-955a5e1f9e52" name="Changes" comment="comm" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,5 +100,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <MESSAGE value="comm" />
+    <option name="LAST_COMMIT_MESSAGE" value="comm" />
   </component>
 </project>

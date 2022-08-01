@@ -115,7 +115,7 @@ public class App
                     break;
                 case 12:
                     instService.assignInstructorToCourse(5L,2L);
-                   // instService.assignInstructorToCourse(5L,2L);
+                    instService.assignInstructorToCourse(5L,2L);
                     break;
                 case 13:
                     lessonService.saveLesson(2L,lesson);
